@@ -1,0 +1,81 @@
+\documentclass{config}
+
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+% 根据个人信息修改
+\name{名字}
+\stuid{学号}
+\date{日期}
+
+
+\begin{document}
+% =============================================
+% Part 1 Header
+% =============================================
+\makecover
+% \makeheader
+
+% =============================================
+% Part 2 Main document
+% =============================================
+
+% \thispagestyle{empty}
+\pagestyle{plain}
+\setcounter{page}{1}
+
+\section{一级标题}
+
+\subsection{二级标题}
+
+\subsubsection{三级标题}
+
+% 以下是可能会用到的组件，若有其他需要，鼓励上网查找latex用法
+
+\subsubsection{公式}
+
+\begin{equation}
+    \label{equation}
+    \int \cos x dx = \sin x + C
+\end{equation}
+
+
+% \begin{equation}
+% W = [w_1, w_2, \cdots, w_N], where~w_i \in \mathbb{R}, i \in [1, N]
+% \end{equation}
+
+
+
+\subsubsection{图片}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/rosette.pdf}
+    \caption{一张黑白色渐变图片}
+\end{figure}
+
+\subsubsection{表格}
+
+\begin{table}[h]
+    \caption{表格标题}
+    \centering
+    \label{table}
+    \begin{tabular}{c|c|c}
+        \toprule
+        数学符号  & 发音       & 含义  \\
+        \midrule
+        \O    & null set & 空集  \\
+        $\pi$ & pi       & 圆周率 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{论文引用}
+
+一篇关于云计算必读的文章\cite{fox2009above}。
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}
