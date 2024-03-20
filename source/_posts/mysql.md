@@ -2,7 +2,7 @@
 title: MySQL
 date: 2024-03-19 23:02:31
 categories:
-  - database system
+  - database systems
 tags:
   - database
   - mysql
