@@ -18,6 +18,8 @@ toc: true
 
 Unix 有五种 I/O 模型：
 
+<!--more-->
+
 - 阻塞式I/O
 - 非阻塞式I/O
 - I/O多路复用（select和poll）

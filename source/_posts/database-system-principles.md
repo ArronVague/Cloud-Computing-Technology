@@ -1,8 +1,9 @@
 ---
 title: database-system-principles
 date: 2024-03-19 21:54:44
-tags:
-
+categories:
+  - Principles of Database Systems
+  - basics
 ---
 
 # 数据库系统原理
@@ -20,6 +21,8 @@ https://developer.aliyun.com/article/815625
 ### 概念
 
 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。
+
+<!--more-->
 
 ![image-20240319220740283](database-system-principles/image-20240319220740283.png)
 
