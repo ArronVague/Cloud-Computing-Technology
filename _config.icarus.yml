@@ -4,6 +4,7 @@ version: 5.1.0
 variant: default
 # Path or URL to the website's logo
 logo:
+  # /img/logo.png
   text: Hodgepodge
 # Page metadata configurations
 head:
@@ -114,7 +115,7 @@ navbar:
   links:
     Download on GitHub:
       icon: fab fa-github
-      url: https://github.com/ArronVague
+      url: https://github.com/ppoffice/hexo-theme-icarus
 # Page footer configurations
 footer:
   # Copyright text
@@ -215,10 +216,10 @@ comment:
 #     qrcode: ""
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
-share:
-  type: addtoany
-  # URL to the ShareThis share plugin script
-  install_url: ""
+# share:
+#   type: addtoany
+#   # URL to the ShareThis share plugin script
+#   install_url: ""
 # Sidebar configurations.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:

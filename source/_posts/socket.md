@@ -2,8 +2,8 @@
 title: socket
 date: 2024-03-20 11:01:14
 categories:
-  - computer networks
-tags: 
+  - Computer Networks
+tags:
   - computer networks
   - socket
 toc: true
@@ -24,13 +24,13 @@ Unix 有五种 I/O 模型：
 
 <!--more-->
 
-- 阻塞式I/O
-- 非阻塞式I/O
-- I/O多路复用（select和poll）
-- 信号驱动式I/O（SIGIO）
-- 异步I/O（AIO）
+- 阻塞式 I/O
+- 非阻塞式 I/O
+- I/O 多路复用（select 和 poll）
+- 信号驱动式 I/O（SIGIO）
+- 异步 I/O（AIO）
 
-### 阻塞式I/O
+### 阻塞式 I/O
 
 应用进程被阻塞，直到数据从内核缓冲区复制到应用进程缓冲区中才返回。
 
@@ -74,14 +74,14 @@ ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr *
 
 应用进程执行 aio_read 系统调用会立即返回，应用进程可以继续执行，不会被阻塞，内核会在所有操作完成之后向应用进程发送信号。
 
-异步是通知应用进程I/O完成，信号驱动是通知可以开始I/O。
+异步是通知应用进程 I/O 完成，信号驱动是通知可以开始 I/O。
 
 ### 五大 I/O 模型比较
 
 - 同步 I/O：将数据从内核缓冲区复制到应用进程缓冲区的阶段（第二阶段），应用进程会阻塞。
 - 异步 I/O：第二阶段应用进程不会阻塞。
 
-除了异步I/O，其它的都是同步I/O。
+除了异步 I/O，其它的都是同步 I/O。
 
 非阻塞式 I/O 、信号驱动 I/O 和异步 I/O 在第一阶段不会阻塞。
 
@@ -118,7 +118,7 @@ poll 的功能与 select 类似，也是等待一组描述符中的一个成为�
 select 和 poll 的功能基本相同，不过在一些实现细节上有所不同。
 
 - select 会修改描述符，而 poll 不会；
-- select监听的描述符数量比poll少。select 的描述符类型使用数组实现，FD_SETSIZE 大小默认为 1024，因此默认只能监听少于 1024 个描述符。如果要监听更多描述符的话，需要修改 FD_SETSIZE 之后重新编译；而 poll 没有描述符数量的限制；
+- select 监听的描述符数量比 poll 少。select 的描述符类型使用数组实现，FD_SETSIZE 大小默认为 1024，因此默认只能监听少于 1024 个描述符。如果要监听更多描述符的话，需要修改 FD_SETSIZE 之后重新编译；而 poll 没有描述符数量的限制；
 - poll 提供了更多的事件类型，并且对描述符的重复利用上比 select 高。
 - 如果一个线程对某个描述符调用了 select 或者 poll，另一个线程关闭了该描述符，会导致调用结果不确定。
 
@@ -176,8 +176,8 @@ epoll 的描述符事件有两种触发模式：LT（level trigger）和 ET（ed
 
 #### 3. epoll 应用场景
 
-只需要运行在Linux上，有大量描述符需要监控，并且连接为长连接。
+只需要运行在 Linux 上，有大量描述符需要监控，并且连接为长连接。
 
-少于1000的描述符没必要用。
+少于 1000 的描述符没必要用。
 
 描述符状态变化多，且短暂，也没必要用。因为 epoll 中的所有描述符都存储在内核中，每次需要对描述符的状态改变都需要通过 epoll_ctl() 进行系统调用，频繁系统调用降低效率。并且 epoll 的描述符存储在内核，不容易调试。

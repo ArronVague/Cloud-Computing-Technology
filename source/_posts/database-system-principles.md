@@ -2,7 +2,7 @@
 title: Principles of Database Systems
 date: 2024-03-19 21:54:44
 categories:
-  - Database
+  - Database Systems
 tags:
   - database
   - principles
@@ -10,6 +10,8 @@ toc: true
 ---
 
 # 数据库系统原理
+
+转载自：https://github.com/CyC2018/CS-Notes/tree/master
 
 https://zhuanlan.zhihu.com/p/476601594
 
