@@ -1,9 +1,12 @@
 ---
-title: mysql
+title: MySQL
 date: 2024-03-19 23:02:31
 categories:
-  - Principles of Database Systems
-  - MySQL
+  - database
+tags:
+  - database
+  - mysql
+toc: true
 ---
 
 # MySQL

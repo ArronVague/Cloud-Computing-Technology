@@ -1,7 +1,11 @@
 ---
 title: socket
 date: 2024-03-20 11:01:14
-tags: computer-networks
+categories:
+  - computer networks
+tags: 
+  - computer networks
+  - socket
 toc: true
 ---
 

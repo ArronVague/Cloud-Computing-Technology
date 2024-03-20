@@ -1,9 +1,12 @@
 ---
-title: database-system-principles
+title: Principles of Database Systems
 date: 2024-03-19 21:54:44
 categories:
-  - Principles of Database Systems
-  - basics
+  - Database
+tags:
+  - database
+  - principles
+toc: true
 ---
 
 # 数据库系统原理
