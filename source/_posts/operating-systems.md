@@ -2,14 +2,12 @@
 title: Principles of Operating Systems
 date: 2024-03-20 17:52:08
 categories:
-  - Operating Systems
+  - operating systems
 tags:
   - operating systems
   - principles
 toc: true
 ---
-
-# 操作系统
 
 转载自：https://github.com/CyC2018/CS-Notes/tree/master
 
@@ -56,7 +54,7 @@ toc: true
 
 异步指进程不是一次性执行完毕，走走停停。
 
-联想到异步I/O，应用程序执行系统调用会立即返回，可以继续执行，不会被阻塞。内核在完成所有操作后通知应用程序。
+联想到异步 I/O，应用程序执行系统调用会立即返回，可以继续执行，不会被阻塞。内核在完成所有操作后通知应用程序。
 
 ### 基本功能
 

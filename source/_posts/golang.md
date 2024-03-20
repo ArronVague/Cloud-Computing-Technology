@@ -2,7 +2,7 @@
 title: Golang 八股文
 date: 2024-03-20 18:12:40
 categories:
-  - Language
+  - programming language
 tags:
   - go
   - language

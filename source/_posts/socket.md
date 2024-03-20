@@ -1,15 +1,13 @@
 ---
-title: socket
+title: Socket
 date: 2024-03-20 11:01:14
 categories:
-  - Computer Networks
+  - computer networks
 tags:
   - computer networks
   - socket
 toc: true
 ---
-
-# Socket
 
 ## 一、I/O 模型
 
