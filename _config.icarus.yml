@@ -110,7 +110,7 @@ navbar:
     Archives: /archives
     Categories: /categories
     Tags: /tags
-    About: /about
+    # About: /about
   # Links to be shown on the right of the navigation bar
   links:
     Download on GitHub:
@@ -257,21 +257,21 @@ widgets:
       Github:
         icon: fab fa-github
         url: https://github.com/ArronVague
-      Facebook:
-        icon: fab fa-facebook
-        url: https://facebook.com
-      Twitter:
-        icon: fab fa-twitter
-        url: https://twitter.com
-      Dribbble:
-        icon: fab fa-dribbble
-        url: https://dribbble.com
-      RSS:
-        icon: fas fa-rss
-        url: /
+      # Facebook:
+      #   icon: fab fa-facebook
+      #   url: https://facebook.com
+      # Twitter:
+      #   icon: fab fa-twitter
+      #   url: https://twitter.com
+      # Dribbble:
+      #   icon: fab fa-dribbble
+      #   url: https://dribbble.com
+      # RSS:
+      #   icon: fas fa-rss
+      #   url: /
   # Table of contents widget configurations
   - # Where should the widget be placed, left sidebar or right sidebar
-    position: left
+    position: right
     type: toc
     # Whether to show the index of each heading
     index: true
@@ -301,10 +301,10 @@ widgets:
     type: archives
   # Tags widget configurations
   - # Where should the widget be placed, left sidebar or right sidebar
-    position: right
+    position: left
     type: tags
     # How to order tags. For example 'name' to order by name in ascending order, and '-length' to order by number of posts in each tags in descending order
-    order_by: name
+    order_by: -length
     # Amount of tags to show. Will show all if not set.
     amount:
     # Whether to show tags count, i.e. number of posts in the tag.
@@ -395,7 +395,7 @@ plugins:
   katex: false
   # Enable the MathJax math typesetting support
   # https://www.mathjax.org/
-  mathjax: false
+  mathjax: true
   # Enable the Outdated Browser plugin
   # http://outdatedbrowser.com/
   outdated_browser: false
