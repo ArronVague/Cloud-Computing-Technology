@@ -2,6 +2,8 @@
 title: 操作系统原理
 date: 2024-03-20 17:52:08
 categories:
+  - work
+  - review
   - operating systems
 tags:
   - operating systems
