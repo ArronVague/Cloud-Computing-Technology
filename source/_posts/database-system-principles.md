@@ -220,9 +220,85 @@ SELECT ... FOR UPDATE;
 
 ![image-20240319223152453](database-system-principles/image-20240319223152453.png)
 
-## 五、多版本并发控制（暂时没见过）
+## 五、多版本并发控制
 
-## 六、Next-Key Locks（暂时没见过）
+多版本并发控制（Multi-Version Concurrency Control, MVCC）是 InnoDB 存储引擎实现隔离级别的一种具体方式，用于实现提交读和可重复读这两种级别。未提交读不需要 MVCC。串行化无法单纯用 MVCC 实现。
+
+### 基本思想
+
+MVCC 利用多版本，使得读操作和写操作没有互斥关系。写操作更新最新版本的快照，读操作读旧版本的快照。
+
+MVCC 规定只能读取已经提交的快照。
+
+### 版本号
+
+- 系统版本号 SYS_ID：是一个递增的数字，每开始一个新的事务，系统版本号就会自动递增。
+- 事务版本号 TRX_ID ：事务开始时的系统版本号。
+
+### Undo 日志
+
+MVCC 的多版本指的是多个版本的快照，快照存储在 Undo 日志中，该日志通过回滚指针 ROLL_PTR 把一个数据行的所有快照连接起来。
+
+例如在 MySQL 创建一个表 t，包含主键 id 和一个字段 x。我们先插入一个数据行，然后对该数据行执行两次更新操作。
+
+```mysql
+INSERT INTO t(id, x) VALUES(1, "a");
+UPDATE t SET x="b" WHERE id=1;
+UPDATE t SET x="c" WHERE id=1;
+```
+
+每个操作都会被 MySQL 的 AUTOCOMMIT 机制当成一个事务。快照中除了记录事务版本号 TRX_ID 和操作之外，还记录了一个 bit 的 DEL 字段，用于标记是否被删除。
+
+![image-20240322191326100](database-system-principles/image-20240322191326100.png)
+
+INSERT、UPDATE、DELETE 操作会创建一个日志，并将事务版本号 TRX_ID 写入。DELETE 可以看成是一个特殊的 UPDATE，还会额外将 DEL 字段设置为 1。
+
+### ReadView
+
+MVCC 维护了一个 ReadView 结构，主要包含了当前系统未提交的事务列表 TRX_IDs {TRX_ID_1, TRX_ID_2, ...}，还有该列表的最小值 TRX_ID_MIN 和 TRX_ID_MAX。
+
+![image-20240322191405046](database-system-principles/image-20240322191405046.png)
+
+SELECT 操作时，根据数据行快照的 TRX_ID 与 TRX_ID_MIN 和 TRX_ID_MAX 之间的关系，从而判断数据行快照是否可以使用：
+
+- TRX_ID < TRX_ID_MIN，表示该数据行快照时在当前所有未提交事务之前进行更改的，因此可以使用。
+- TRX_ID > TRX_ID_MAX，表示该数据行快照是在事务启动之后被更改的，因此不可使用。
+- TRX_ID_MIN <= TRX_ID <= TRX_ID_MAX，需要根据隔离级别再进行判断：
+  - 提交读：如果 TRX_ID 在 TRX_IDs 列表中，表示该数据行快照对应的事务还未提交，则该快照不可使用。否则表示已经提交，可以使用。
+  - 可重复读：都不可以使用。因为如果可以使用的话，那么其它事务也可以读到这个数据行快照并进行修改，那么当前事务再去读这个数据行得到的值就会发生改变，也就是出现了不可重复读问题。
+
+在数据行快照不可使用的情况下，需要沿着 Undo Log 的回滚指针 ROLL_PTR 找到下一个快照，再进行上面的判断。
+
+说人话，当前数据行可用的情况仅当该数据行快照已提交。
+
+### 快照读与当前读
+
+#### 1. 快照读
+
+MVCC 的 SELECT 操作是快照中的数据，不需要进行加锁操作。
+
+```mysql
+SELECT * FROM table ...;
+```
+
+#### 2. 当前读
+
+MVCC 其它会对数据库进行修改的操作（INSERT、UPDATE、DELETE）需要进行加锁操作，从而读取最新的数据。可以看到 MVCC 并不是完全不用加锁，而只是避免了 SELECT 的加锁操作。
+
+```mysql
+INSERT;
+UPDATE;
+DELETE;
+```
+
+在进行 SELECT 操作时，可以强制指定进行加锁操作。以下第一个语句需要加 S 锁，第二个需要加 X 锁。
+
+```mysql
+SELECT * FROM table WHERE ? lock in share mode;
+SELECT * FROM table WHERE ? for update;
+```
+
+## 六、Next-Key Locks（？）
 
 ## 七、关系数据库设计理论（以后补充完整）
 
@@ -248,4 +324,4 @@ SELECT ... FOR UPDATE;
 
 非主属性不传递函数依赖于键码。消除传递依赖。
 
-## 八、ER 图（以后再补充）
+## 八、ER 图（感觉真不会问）
