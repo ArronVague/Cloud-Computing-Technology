@@ -2,6 +2,8 @@
 title: Socket
 date: 2024-03-20 11:01:14
 categories:
+  - work
+  - review
   - computer networks
 tags:
   - computer networks
