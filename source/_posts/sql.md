@@ -3,11 +3,12 @@ title: SQL 语法
 toc: true
 date: 2024-03-23 21:14:05
 categories:
-- work
-- database systems
+  - work
+  - review
+  - database systems
 tags:
-- database systems
-- sql
+  - database systems
+  - sql
 ---
 
 ## 一、基础
@@ -36,4 +37,3 @@ CREATE TABLE mytable (
   # 设置主键为 id
   PRIMARY KEY (`id`));
 ```
-
