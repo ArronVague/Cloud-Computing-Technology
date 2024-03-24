@@ -100,6 +100,9 @@ int select(int n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct t
 select 允许应用程序监视一组文件描述符，等待一个或者多个描述符成为就绪状态，从而完成 I/O 操作。
 
 - fd_set 使用数组实现，数组大小使用 FD_SETSIZE 定义，所以只能监听**少于 FD_SETSIZE 数量**的描述符。有三种类型的描述符类型：readset、writeset、exceptset，分别对应读、写、异常条件的描述符集合。
+
+  - > 在早期的系统中，资源（如内存）相对较少，因此需要对可以使用的资源进行一定的限制。此外，`select`函数使用一个位图（bitmap）来表示文件描述符集合，每个文件描述符在位图中对应一个位。如果允许无限制的文件描述符数量，那么位图的大小就会变得非常大，这将导致效率问题。
+
 - timeout 为超时参数，调用 select 会一直阻塞直到有描述符的事件到达或者等待的时间超过 timeout。
 - 成功调用返回结果大于 0，出错返回结果为 -1，超时返回结果为 0。
 
