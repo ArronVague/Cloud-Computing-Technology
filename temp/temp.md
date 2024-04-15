@@ -400,3 +400,71 @@ registry：服务注册发现
 selector：负载均衡
 
 transport：通信模块接口
+
+
+
+
+
+linux查看进程、线程、空闲内存
+
+linux进程的内存分布
+
+死锁 举例
+
+怎么避免
+
+线程安全
+
+c++虚函数的底层
+
+字节流（大小端）
+
+网络字节流
+
+tcp、udp
+
+三次握手
+
+tcp状态机
+
+四次挥手
+
+syn flood? lvs?
+
+有没有抓包过tcp，用的什么命令？
+
+linux下抓包过吗？
+
+线程和协程
+
+常见的查找：二分、哈希、二叉搜索
+
+- 哈希冲突
+
+epoll
+
+epoll和select的区别
+
+红黑树
+
+怎么实现
+
+为什么叫红黑树
+
+redis的跳表
+
+为什么用跳表而不是二叉搜索树
+
+常见的排序
+
+稳定
+
+堆排序
+
+golang defer执行顺序
+
+main里面
+
+println("return", func)
+
+里面还有一些i，defer
